@@ -28,8 +28,8 @@ public class Player extends Entity {
         this.gp = gp;
         this.keyH = keyH;
 
-        screenX = gp.screenWidth/2;
-        screenY = gp.screenHeight/2;
+        screenX = gp.screenWidth/2 - (gp.tileSize/2); // <-- The second part is to middle it because the normal tile starts in the right upper corner.
+        screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
         setDefaultValues();
         getPlayerImage();

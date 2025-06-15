@@ -24,6 +24,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     int FPS = 60;
 
+    //World Settings
+
+    public final int maxWorldCol = 50;
+    public final int maxWorldRow = 50;
+    // public final int worldWidth = tileSize / maxWorldCol;
+    // public final int worldHeight = tileSize / maxWorldRow;
+
     //endregion
 
     //region ObjectVariables
@@ -31,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     Thread gameThread; // <-- A Thread is something you can start and Stop. It keeps a Programm Running we use it in this Panel to keep it running
     // For this to work we need to implement "Runnable" in the ClassName and because of Runnable we need to Override the run() Method from it.
-    Player player = new Player(this, keyH); // <-- Creating new Player Object which gets feed by the GamePanel itself and the KeyHandler Object we have in here.
+    public Player player = new Player(this, keyH); // <-- Creating new Player Object which gets feed by the GamePanel itself and the KeyHandler Object we have in here.
     TileManager tileM = new TileManager(this);
 
     //endregion
