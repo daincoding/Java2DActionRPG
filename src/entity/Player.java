@@ -84,7 +84,7 @@ public class Player extends Entity {
             } else if (keyH.leftPressed) {
                 direction = "left";
                 x -= speed;
-            } else if (keyH.rightPressed) {
+            } else {
                 direction = "right";
                 x += speed; // <-- In Java X increases to the right.
             }
