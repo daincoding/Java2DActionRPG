@@ -9,7 +9,7 @@ public class GamePanel extends JPanel implements Runnable {
     // -- GamePanel is the main Class which makes the GameLoop and gets all the Objects.
 
     //region SCREEN SETTINGS
-    final int originalTileSize = 16; // <-- 16x16 Tile size for the Game. Is the standart for Retro
+    final int originalTileSize = 16; // <-- 16x16 Tile size for the Game. Is the standard for Retro
     final int scale = 3; // <-- Scaling Multiplikator to make 16 to 48
     public final int tileSize = originalTileSize * scale; // <-- 48x48
 
@@ -56,13 +56,34 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
 
-        // While the gameThread is running we continue with this while Loop.
+        // -- While the gameThread is running we continue with this while Loop. 🔁
 
         while(gameThread !=  null) {
 
+            // -- A Game Loop needs 2 things: Update and Draw ‼️
+
+            // -- UPDATE: Update Information such as character positions
+            update();
+            // -- DRAW: Draw the screen with the updated Information
+            repaint(); // <-- repaint is the official Method name for the paintComponent
         }
 
     }
+    //endregion
 
+    //region Update & Paint Components 🔁 🖼️
+    public void update(){
+
+    }
+
+    public void paintComponent(Graphics g) { // <-- This Component comes from Java. It's the main way to paint something on JPanel
+        super.paintComponent(g); // <-- that's why we need super here. Super calls the ParentClass because paintComponent is a subclass of JPanel.
+
+        Graphics2D g2 = (Graphics2D) g; // <-- We convert g to 2D and call it g2. We change it because 2D has more functions.
+
+        g2.setColor(Color.WHITE);
+        g2.fillRect(100, 100, tileSize, tileSize);
+        g2.dispose(); // <-- Practice to save memory.
+    }
     //endregion
 }
