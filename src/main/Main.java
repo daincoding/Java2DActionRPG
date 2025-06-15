@@ -17,6 +17,6 @@ public class Main {
         window.setLocationRelativeTo(null);  // <-- Window is in the Middle of the Screen
         window.setVisible(true); // <-- You can see it
 
-        gamePanel.startGameThread();
+        gamePanel.startGameThread(); // <-- Starts the Thread the lets the Game Running.
     }
 }

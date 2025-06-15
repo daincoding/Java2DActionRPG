@@ -85,6 +85,8 @@ public class GamePanel extends JPanel implements Runnable {
 
             while (gameThread != null) {
 
+                // -- ⚠️ THIS SETS UP THE FPS - HOW OFTEN SHALL THE PROGRAMM UPDATE?!? It's set to 60 FPS at the moment.
+
                 currentTime = System.nanoTime();
                 delta += (currentTime - lastTime) / drawInterval;
                 timer += currentTime - lastTime;
