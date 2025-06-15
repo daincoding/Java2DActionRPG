@@ -17,10 +17,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int tileSize = originalTileSize * scale; // <-- 48x48
 
     // -- Decide how many tiles you want to show at the same time?
-    final int maxScreenCol = 16;
-    final int maxScreenRow = 12; // <-- This means the Ratio is 4 : 3
-    final int screenWidth = tileSize * maxScreenCol; // <-- 48 * 16 = 768px
-    final int screenHeight = tileSize * maxScreenRow; // <-- 48 * 12 = 576px
+    public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12; // <-- This means the Ratio is 4 : 3
+    public final int screenWidth = tileSize * maxScreenCol; // <-- 48 * 16 = 768px
+    public final int screenHeight = tileSize * maxScreenRow; // <-- 48 * 12 = 576px
 
     int FPS = 60;
 
