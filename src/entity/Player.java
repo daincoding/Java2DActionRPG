@@ -31,6 +31,15 @@ public class Player extends Entity {
         screenX = gp.screenWidth/2 - (gp.tileSize/2); // <-- The second part is to middle it because the normal tile starts in the right upper corner.
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
+
+        // -- Creating the Rectangle fully with the values for understanding purpose.
+        solidArea = new Rectangle();
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidArea.width = 32;
+        solidArea.height = 32;
+
+
         setDefaultValues();
         getPlayerImage();
     }
@@ -87,16 +96,33 @@ public class Player extends Entity {
 
             if (keyH.upPressed) {
                 direction = "up";
-                worldY -= speed; // <-- In Java the left upper Corner is 0 so going Up is decreasing Y and increasing when go down.
             } else if (keyH.downPressed) {
                 direction = "down";
-                worldY += speed;
             } else if (keyH.leftPressed) {
                 direction = "left";
-                worldX -= speed;
             } else {
                 direction = "right";
-                worldX += speed; // <-- In Java X increases to the right.
+            }
+
+            collisionOn = false;
+            gp.cChecker.checkTile(this); // <-- Since Player is a subclass of Entity we can send THIS class over as entity component.
+
+            if(!collisionOn) {
+
+                switch (direction) {
+                    case "up":
+                        worldY -= speed; // <-- In Java the left upper Corner is 0 so going Up is decreasing Y and increasing when go down.
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed; // <-- In Java X increases to the right.
+                        break;
+                }
             }
 
             // This is the Switcher for the Pictures since this method is called 60 times.

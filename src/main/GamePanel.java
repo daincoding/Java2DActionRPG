@@ -40,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
     // For this to work we need to implement "Runnable" in the ClassName and because of Runnable we need to Override the run() Method from it.
     public Player player = new Player(this, keyH); // <-- Creating new Player Object which gets feed by the GamePanel itself and the KeyHandler Object we have in here.
     TileManager tileM = new TileManager(this);
+    public CollisionChecker cChecker = new CollisionChecker(this);
 
     //endregion
 
