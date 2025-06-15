@@ -1,6 +1,7 @@
 package main;
 
 import entity.Player;
+import tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread; // <-- A Thread is something you can start and Stop. It keeps a Programm Running we use it in this Panel to keep it running
     // For this to work we need to implement "Runnable" in the ClassName and because of Runnable we need to Override the run() Method from it.
     Player player = new Player(this, keyH); // <-- Creating new Player Object which gets feed by the GamePanel itself and the KeyHandler Object we have in here.
-
+    TileManager tileM = new TileManager(this);
 
     //endregion
 
@@ -122,6 +123,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g; // <-- We convert g to 2D and call it g2. We change it because 2D has more functions.
 
+        tileM.draw(g2); // <-- Its like layers so background has to come first
         player.draw(g2);
 
         g2.dispose(); // <-- Practice to save memory.
