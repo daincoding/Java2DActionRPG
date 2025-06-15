@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread; // <-- A Thread is something you can start and Stop. It keeps a Programm Running we use it in this Panel to keep it running
     // For this to work we need to implement "Runnable" in the ClassName and because of Runnable we need to Override the run() Method from it.
+    KeyHandler keyH = new KeyHandler();
 
     //endregion
 
@@ -38,6 +39,8 @@ public class GamePanel extends JPanel implements Runnable {
         // -- This can help with rendering performance.
 
 
+        this.addKeyListener(keyH); // <-- Getting the KeyListener from the KeyHandler Object
+        this.setFocusable(true); // <-- With this, the GamePanel can be focused to receive key input.
 
     }
 
