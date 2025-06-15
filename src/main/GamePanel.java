@@ -1,5 +1,7 @@
 package main;
 
+import entity.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,15 +30,8 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     Thread gameThread; // <-- A Thread is something you can start and Stop. It keeps a Programm Running we use it in this Panel to keep it running
     // For this to work we need to implement "Runnable" in the ClassName and because of Runnable we need to Override the run() Method from it.
+    Player player = new Player(this, keyH); // <-- Creating new Player Object which gets feed by the GamePanel itself and the KeyHandler Object we have in here.
 
-
-    //endregion
-
-    //region Players Default Position
-
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 5;
 
     //endregion
 
@@ -118,16 +113,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void update(){
 
         // -- We use the Update Method for everything that shall change at one point on the screen - like Movement
+        player.update();
 
-        if (keyH.upPressed) {
-            playerY -= playerSpeed; // <-- In Java the left upper Corner is 0 so going Up is decreasing Y and increasing when go down.
-        } else if (keyH.downPressed) {
-            playerY += playerSpeed;
-        } else if (keyH.leftPressed) {
-            playerX -= playerSpeed;
-        } else if (keyH.rightPressed) {
-            playerX += playerSpeed; // <-- In Java X increases to the right.
-        }
     }
 
     public void paintComponent(Graphics g) { // <-- This Component comes from Java. It's the main way to paint something on JPanel
@@ -135,8 +122,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g; // <-- We convert g to 2D and call it g2. We change it because 2D has more functions.
 
-        g2.setColor(Color.WHITE);
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
+        player.draw(g2);
+
         g2.dispose(); // <-- Practice to save memory.
     }
     //endregion
