@@ -3,7 +3,7 @@ package main;
 import javax.swing.*;
 import java.awt.*;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements Runnable {
     // -- Extends JPanel means it inherits everything from the build in Class JPanel and adds features on Top.
 
     // -- GamePanel is the main Class which makes the GameLoop and gets all the Objects.
@@ -21,7 +21,14 @@ public class GamePanel extends JPanel {
 
     //endregion
 
-    //region Constructor
+    //region ObjectVariables
+
+    Thread gameThread; // <-- A Thread is something you can start and Stop. It keeps a Programm Running we use it in this Panel to keep it running
+    // For this to work we need to implement "Runnable" in the ClassName and because of Runnable we need to Override the run() Method from it.
+
+    //endregion
+
+    //region Constructor 🛠️
 
     public GamePanel() {
 
@@ -31,6 +38,29 @@ public class GamePanel extends JPanel {
         // -- This can help with rendering performance.
 
 
+
+    }
+
+    //endregion
+
+    //region Runnable Override Method: Run
+
+    public void startGameThread() {
+
+        gameThread = new Thread(this); // <-- Setting up the Thread from above
+        gameThread.start(); // <-- This calls the Run Method
+    }
+
+    // This method is used to create a thread.
+    // ⚠️ ALSO IT INCLUDES OUR GAME LOOP ⚠️
+    @Override
+    public void run() {
+
+        // While the gameThread is running we continue with this while Loop.
+
+        while(gameThread !=  null) {
+
+        }
 
     }
 
